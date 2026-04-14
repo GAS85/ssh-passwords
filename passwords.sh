@@ -190,8 +190,8 @@ rm "$STATS.tmp" "$CACHE"
 # ---------------------------------------------------------------------------
 # 7. Push to git
 # ---------------------------------------------------------------------------
-#git add -A
-#git diff --cached --quiet || git commit -m "Automatic update from: $(date -R)"
-#git push
+git add -A
+git diff --cached --quiet || git commit -m "Automatic update from: $(date -R)"
+git push
 
 exit 0
