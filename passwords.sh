@@ -23,7 +23,7 @@ UNIQ="uniq.passwords.txt"
 RAW="raw.passwords.txt"
 CACHE="hibp.cache.txt"   # SHA1-based cache
 
-HIBP_LIMIT="${HIBP_LIMIT:-10}"
+HIBP_LIMIT="${HIBP_LIMIT:-1000}"
 HIBP_DELAY="${HIBP_DELAY:-0.15}"
 
 touch "$STATS" "$UNIQ" "$CACHE"
