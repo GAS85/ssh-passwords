@@ -26,6 +26,9 @@ CACHE="hibp.cache.txt"   # SHA1-based cache
 HIBP_LIMIT="${HIBP_LIMIT:-1000}"
 HIBP_DELAY="${HIBP_DELAY:-0.15}"
 
+# Remove cache if older than 15 days
+find "$CACHE" -ctime +15 -exec rm {} \;
+
 touch "$STATS" "$UNIQ" "$CACHE"
 
 # ---------------------------------------------------------------------------
@@ -145,7 +148,7 @@ if (( HIBP_LIMIT > 0 )); then
             continue
         fi
 
-        # ✅ IMPORTANT: cache FULL response (all suffixes)
+        # Cache FULL response (all suffixes)
         while IFS=: read -r resp_suffix resp_count; do
             resp_suffix="${resp_suffix^^}"  # uppercase
             full_sha="${prefix}${resp_suffix}"
@@ -185,7 +188,7 @@ fi
     done < "$STATS.tmp"
 } > "$STATS"
 
-rm "$STATS.tmp" "$CACHE"
+rm "$STATS.tmp"
 
 # ---------------------------------------------------------------------------
 # 7. Push to git
