@@ -27,7 +27,7 @@ HIBP_LIMIT="${HIBP_LIMIT:-1000}"
 HIBP_DELAY="${HIBP_DELAY:-0.15}"
 
 # Remove cache if older than 15 days
-find . -name "$CACHE" -ctime +15 -exec rm {} \;
+find "$WORKING_DIR" -name "$CACHE" -ctime +15 -exec rm {} \;
 
 touch "$STATS" "$UNIQ" "$CACHE"
 
